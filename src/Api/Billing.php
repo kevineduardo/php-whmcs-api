@@ -228,18 +228,19 @@ class Billing extends AbstractApi
     {
         return $this->send('GetInvoice', ['invoiceid' => $invoiceId]);
     }
+    
+    public function getInvoicePixCode(int $invoiceId)
+    {
+        return $this->send('GetInvoicePixCode', ['invoiceid' => $invoiceId]);
+    }
 
     /**
      * @see https://developers.whmcs.com/api-reference/getinvoices/
      */
     public function getInvoices(array $parameters = [])
     {
-        $resolver = $this->createOptionsResolver();
-        $resolver->setDefined(['userid', 'status']);
-        $resolver->setAllowedTypes('userid', 'int');
-        $resolver->setAllowedValues('status', self::STATUS_INVOICE);
 
-        return $this->send('GetInvoices', $resolver->resolve($parameters));
+        return $this->send('GetInvoices', $parameters);
     }
 
     /**

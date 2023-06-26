@@ -100,6 +100,13 @@ class Client extends AbstractApi
 
         return $this->send('GetClients', $resolver->resolve($parameters));
     }
+    
+    public function GetClientsByPhoneNumber(array $parameters = [])
+    {
+        $resolver = $this->createOptionsResolver();
+
+        return $this->send('GetClientsByPhoneNumber', $resolver->resolve($parameters));
+    }
 
     /**
      * @see https://developers.whmcs.com/api-reference/getclientsaddons/
